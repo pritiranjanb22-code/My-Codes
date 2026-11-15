@@ -1,0 +1,42 @@
+# Directory.Build.props
+
+Common build properties for all projects in the solution.
+
+```xml
+<Project>
+  <PropertyGroup>
+    <!-- Solution-wide settings -->
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageVersionFile>Directory.Packages.props</CentralPackageVersionFile>
+    
+    <!-- Common properties -->
+    <Company>Your Company</Company>
+    <Authors>Your Name</Authors>
+    <Copyright>Copyright © 2024</Copyright>
+    <Product>NetUsage Monitor</Product>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <InformationalVersion>1.0.0</InformationalVersion>
+    
+    <!-- Build settings -->
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <NoWarn>$(NoWarn);CS1591;CS8618;CS8600;CS8602;CS8604</NoWarn>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+    
+    <!-- Debug settings -->
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    
+    <!-- Code analysis -->
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+  </PropertyGroup>
+</Project>

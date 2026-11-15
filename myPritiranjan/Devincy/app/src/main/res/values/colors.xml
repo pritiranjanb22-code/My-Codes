@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 Color Scheme -->
+    <color name="md_theme_dark_primary">#FFBB86FC</color>
+    <color name="md_theme_dark_onPrimary">#FF1F1B24</color>
+    <color name="md_theme_dark_primaryContainer">#FF3700B3</color>
+    <color name="md_theme_dark_onPrimaryContainer">#FFEADDFF</color>
+    <color name="md_theme_dark_secondary">#FFCCC2DC</color>
+    <color name="md_theme_dark_onSecondary">#FF332D41</color>
+    <color name="md_theme_dark_secondaryContainer">#FF4A4458</color>
+    <color name="md_theme_dark_onSecondaryContainer">#FFE8DEF8</color>
+    <color name="md_theme_dark_tertiary">#FFEFB8C8</color>
+    <color name="md_theme_dark_onTertiary">#FF492532</color>
+    <color name="md_theme_dark_tertiaryContainer">#FF633B48</color>
+    <color name="md_theme_dark_onTertiaryContainer">#FFFDAFBA</color>
+    <color name="md_theme_dark_error">#FFFFB4AB</color>
+    <color name="md_theme_dark_onError">#FF690005</color>
+    <color name="md_theme_dark_errorContainer">#FF93000A</color>
+    <color name="md_theme_dark_onErrorContainer">#FFFFDAD6</color>
+    <color name="md_theme_dark_background">#FF121212</color>
+    <color name="md_theme_dark_onBackground">#FFE6E1E5</color>
+    <color name="md_theme_dark_surface">#FF121212</color>
+    <color name="md_theme_dark_onSurface">#FFE6E1E5</color>
+    <color name="md_theme_dark_surfaceVariant">#FF44474E</color>
+    <color name="md_theme_dark_onSurfaceVariant">#FFCAC4D0</color>
+    <color name="md_theme_dark_outline">#FF8E9099</color>
+    <color name="md_theme_dark_outlineVariant">#FF44474E</color>
+    <color name="md_theme_dark_shadow">#FF000000</color>
+    <color name="md_theme_dark_scrim">#FF000000</color>
+    <color name="md_theme_dark_inverseSurface">#FFE6E1E5</color>
+    <color name="md_theme_dark_inverseOnSurface">#FF313033</color>
+    <color name="md_theme_dark_inversePrimary">#FF3700B3</color>
+    
+    <!-- Custom VideoAI Colors -->
+    <color name="videoai_primary">#FFBB86FC</color>
+    <color name="videoai_primary_variant">#FF3700B3</color>
+    <color name="videoai_secondary">#FF03DAC6</color>
+    <color name="videoai_secondary_variant">#FF018786</color>
+    <color name="videoai_background">#FF0A0A0A</color>
+    <color name="videoai_surface">#FF1E1E1E</color>
+    <color name="videoai_surface_variant">#FF2C2C2C</color>
+    <color name="videoai_timeline_bg">#FF141414</color>
+    <color name="videoai_timeline_track">#FF1A1A1A</color>
+    <color name="videoai_timeline_clip_video">#FFBB86FC</color>
+    <color name="videoai_timeline_clip_audio">#FF03DAC6</color>
+    <color name="videoai_timeline_clip_text">#FFFFB74D</color>
+    <color name="videoai_timeline_clip_effect">#FFEF5350</color>
+    <color name="videoai_timeline_playhead">#FFFFFFFF</color>
+    <color name="videoai_timeline_grid">#FF333333</color>
+    <color name="videoai_preview_bg">#FF000000</color>
+    <color name="videoai_selection">#FFBB86FC</color>
+    <color name="videoai_keyframe">#FFFFFFFF</color>
+    <color name="videoai_waveform">#FF03DAC6</color>
+    <color name="videoai_waveform_bg">#FF1A1A1A</color>
+    <color name="videoai_on_primary">#FF1F1B24</color>
+    <color name="videoai_on_surface">#FFFFFFFF</color>
+    <color name="videoai_on_background">#FFFFFFFF</color>
+    <color name="videoai_divider">#FF333333</color>
+    <color name="videoai_error">#FFCF6679</color>
+    <color name="videoai_success">#FF4CAF50</color>
+    <color name="videoai_warning">#FFFFB74D</color>
+    <color name="videoai_info">#FF64B5F6</color>
+    
+    <!-- Alpha variants -->
+    <color name="videoai_overlay_50">#80000000</color>
+    <color name="videoai_overlay_70">#B3000000</color>
+    <color name="videoai_overlay_90">#E6000000</color>
+    <color name="videoai_primary_10">#1AFFBB86FC</color>
+    <color name="videoai_primary_20">#33FFBB86FC</color>
+    <color name="videoai_selection_bg">#33FFBB86FC</color>
+</resources>

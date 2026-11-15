@@ -1,0 +1,146 @@
+<UserControl x:Class="NetUsageMonitor.Wpf.Views.DiagnosticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:vm="clr-namespace:NetUsageMonitor.Wpf.ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="900"
+             d:DataContext="{d:DesignInstance vm:DiagnosticsViewModel}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="24">
+        <StackPanel>
+            <!-- Header -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="SpaceBetween" Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Diagnostics" Style="{DynamicResource Header1Style}"/>
+                    <TextBlock Text="Troubleshoot device connectivity and SNMP issues" Style="{DynamicResource SubtitleStyle}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Device Selector -->
+            <Border Style="{DynamicResource CardStyle}" Margin="0,0,0,16">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="SpaceBetween" Margin="0,0,0,16">
+                        <TextBlock Text="Select Device" Style="{DynamicResource Header3Style}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox ItemsSource="{Binding Devices}" DisplayMemberPath="GetDisplayName" SelectedItem="{Binding SelectedDevice}" Width="300" Margin="0,0,12,0"/>
+                            <Button Content="Run Diagnostics" Command="{Binding RunDiagnosticsCommand}" Style="{DynamicResource PrimaryButtonStyle}" Margin="0,0,12,0"/>
+                            <Button Content="Run Full Diagnostics" Command="{Binding RunFullDiagnosticsCommand}" Style="{DynamicResource SecondaryButtonStyle}"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <ProgressBar IsIndeterminate="{Binding IsRunningDiagnostics}" Height="4" Visibility="{Binding IsRunningDiagnostics, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Results -->
+            <Border Style="{DynamicResource CardStyle}" Visibility="{Binding DiagnosticResult, Converter={x:Static converters:NullToVisibilityConverter.Instance}}">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
+                        <TextBlock Text="Diagnostic Results" Style="{DynamicResource Header3Style}"/>
+                        <TextBlock Text="{Binding DiagnosticResult.DeviceName}" FontSize="16" FontWeight="Medium" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center" Margin="16,0,0,0"/>
+                    </StackPanel>
+
+                    <!-- Status Grid -->
+                    <Grid Margin="0,0,0,16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="Device Reachable:" Margin="0,4,16,4" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding DiagnosticResult.DeviceReachable, Converter={x:Static converters:BooleanToStatusTextConverter.Instance}, ConverterParameter=Yes;No}" 
+                                   FontWeight="Medium" Foreground="{Binding DiagnosticResult.DeviceReachable, Converter={x:Static converters:BooleanToBrushConverter.Instance}, ConverterParameter=Green;Red}"/>
+
+                        <TextBlock Grid.Row="0" Grid.Column="2" Text="SNMP Available:" Margin="24,4,16,4" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding DiagnosticResult.SnmpAvailable, Converter={x:Static converters:BooleanToStatusTextConverter.Instance}, ConverterParameter=Yes;No}" 
+                                   FontWeight="Medium" Foreground="{Binding DiagnosticResult.SnmpAvailable, Converter={x:Static converters:BooleanToBrushConverter.Instance}, ConverterParameter=Green;Red}"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="SNMP Version:" Margin="0,4,16,4" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding DiagnosticResult.SnmpVersion}" FontWeight="Medium"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="2" Text="Selected Interface:" Margin="24,4,16,4" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding DiagnosticResult.SelectedInterface}" FontWeight="Medium"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Current In Octets:" Margin="0,4,16,4" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding DiagnosticResult.CurrentInOctets, StringFormat='{0:N0}'}" FontWeight="Medium" FontFamily="Consolas"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="2" Text="Current Out Octets:" Margin="24,4,16,4" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                        <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding DiagnosticResult.CurrentOutOctets, StringFormat='{0:N0}'}" FontWeight="Medium" FontFamily="Consolas"/>
+                    </Grid>
+
+                    <!-- Interfaces -->
+                    <Expander Header="Discovered Interfaces" IsExpanded="True" Margin="0,0,0,16">
+                        <DataGrid ItemsSource="{Binding DiagnosticResult.Interfaces}" AutoGenerateColumns="False" IsReadOnly="True" MaxHeight="200">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Index" Binding="{Binding Index}" Width="60"/>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                                <DataGridTextColumn Header="Description" Binding="{Binding Description}" Width="2*"/>
+                                <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="*"/>
+                                <DataGridTextColumn Header="Speed" Binding="{Binding Speed, StringFormat='{0:N0} bps'}" Width="*"/>
+                                <DataGridTemplateColumn Header="Status" Width="80">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Ellipse Width="10" Height="10" Fill="{Binding IsUp, Converter={x:Static converters:BooleanToBrushConverter.Instance}, ConverterParameter=Green;Red}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTextColumn Header="In (HC)" Binding="{Binding HCInOctets, StringFormat='{0:N0}'}" Width="*"/>
+                                <DataGridTextColumn Header="Out (HC)" Binding="{Binding HCOutOctets, StringFormat='{0:N0}'}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Expander>
+
+                    <!-- Errors -->
+                    <Expander Header="Errors" IsExpanded="{Binding DiagnosticResult.Errors.Count, Converter={x:Static converters:CountToVisibilityConverter.Instance}}" Margin="0,0,0,16"
+                              Visibility="{Binding DiagnosticResult.Errors.Count, Converter={x:Static converters:CountToVisibilityConverter.Instance}}">
+                        <ItemsControl ItemsSource="{Binding DiagnosticResult.Errors}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#FFEBEE" BorderBrush="#F44336" BorderThickness="1,0,0,0" CornerRadius="0,4,4,0" Padding="12,8" Margin="0,4,0,0">
+                                        <TextBlock Text="{Binding}" Foreground="#C62828" TextWrapping="Wrap"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Expander>
+
+                    <!-- Warnings -->
+                    <Expander Header="Warnings" IsExpanded="{Binding DiagnosticResult.Warnings.Count, Converter={x:Static converters:CountToVisibilityConverter.Instance}}" Margin="0,0,0,16"
+                              Visibility="{Binding DiagnosticResult.Warnings.Count, Converter={x:Static converters:CountToVisibilityConverter.Instance}}">
+                        <ItemsControl ItemsSource="{Binding DiagnosticResult.Warnings}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#FFF8E1" BorderBrush="#FF9800" BorderThickness="1,0,0,0" CornerRadius="0,4,4,0" Padding="12,8" Margin="0,4,0,0">
+                                        <TextBlock Text="{Binding}" Foreground="#E65100" TextWrapping="Wrap"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Expander>
+
+                    <!-- Suggestions -->
+                    <Expander Header="Suggestions" IsExpanded="True" Margin="0,0,0,16"
+                              Visibility="{Binding DiagnosticResult.Suggestions.Count, Converter={x:Static converters:CountToVisibilityConverter.Instance}}">
+                        <ItemsControl ItemsSource="{Binding DiagnosticResult.Suggestions}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="#E8F5E9" BorderBrush="#4CAF50" BorderThickness="1,0,0,0" CornerRadius="0,4,4,0" Padding="12,8" Margin="0,4,0,0">
+                                        <TextBlock Text="{Binding}" Foreground="#2E7D32" TextWrapping="Wrap"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Expander>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

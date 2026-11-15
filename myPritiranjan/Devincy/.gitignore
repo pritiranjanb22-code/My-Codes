@@ -1,0 +1,38 @@
+# Gradle
+.gradle/
+build/
+*/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+local.properties
+*.keystore
+!*.jks
+
+# Build outputs
+*.apk
+*.aab
+*.ap_
+
+# Logs
+*.log
+
+# Test coverage
+coverage/
+*.ec
+
+# Kotlin
+*.kotlin_builtins

@@ -1,0 +1,63 @@
+{
+  "expo": {
+    "name": "RoadTrip X",
+    "slug": "roadtrip-x",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1a1a2e"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.roadtripx.app",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "RoadTrip X needs location access for live group tracking and navigation",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "RoadTrip X needs background location for trip tracking",
+        "NSCameraUsageDescription": "RoadTrip X needs camera access for receipt scanning and photo sharing",
+        "NSPhotoLibraryUsageDescription": "RoadTrip X needs photo library access for trip memories",
+        "NSMicrophoneUsageDescription": "RoadTrip X needs microphone for voice messages and push-to-talk"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundColor": "#1a1a2e"
+      },
+      "package": "com.roadtripx.app",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_BACKGROUND_LOCATION",
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "RECORD_AUDIO",
+        "VIBRATE",
+        "FOREGROUND_SERVICE"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-location",
+      "expo-camera",
+      "expo-notifications",
+      "expo-sqlite",
+      "expo-image-picker",
+      "react-native-maps"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "your-project-id"
+      }
+    }
+  }
+}

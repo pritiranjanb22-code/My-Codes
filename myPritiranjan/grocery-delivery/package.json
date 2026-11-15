@@ -1,0 +1,31 @@
+{
+  "name": "grocery-delivery",
+  "version": "1.0.0",
+  "description": "Grocery Shop Home Delivery System - Monorepo",
+  "private": true,
+  "workspaces": [
+    "mobile-app",
+    "admin-dashboard",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:admin\" \"npm run dev:mobile\"",
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:admin": "npm run dev --workspace=admin-dashboard",
+    "dev:mobile": "npm run start --workspace=mobile-app",
+    "build:all": "npm run build --workspaces",
+    "build:backend": "npm run build --workspace=backend",
+    "build:admin": "npm run build --workspace=admin-dashboard",
+    "build:mobile": "npm run build --workspace=mobile-app",
+    "db:migrate": "npm run db:migrate --workspace=backend",
+    "db:seed": "npm run db:seed --workspace=backend",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

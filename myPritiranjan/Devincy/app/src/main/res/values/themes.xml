@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base Theme -->
+    <style name="Theme.VideoAI" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/videoai_primary</item>
+        <item name="colorPrimaryVariant">@color/videoai_primary_variant</item>
+        <item name="colorOnPrimary">@color/videoai_on_primary</item>
+        <item name="colorSecondary">@color/videoai_secondary</item>
+        <item name="colorSecondaryVariant">@color/videoai_secondary_variant</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorBackground">@color/videoai_background</item>
+        <item name="colorOnBackground">@color/videoai_on_background</item>
+        <item name="colorSurface">@color/videoai_surface</item>
+        <item name="colorOnSurface">@color/videoai_on_surface</item>
+        <item name="colorError">@color/videoai_error</item>
+        <item name="colorOnError">@color/white</item>
+        <item name="android:statusBarColor">@color/videoai_background</item>
+        <item name="android:navigationBarColor">@color/videoai_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+    
+    <!-- Editor Theme -->
+    <style name="Theme.VideoAI.Editor" parent="Theme.VideoAI">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    
+    <!-- Splash Theme -->
+    <style name="Theme.VideoAI.Splash" parent="Theme.VideoAI">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    
+    <!-- Dialog Theme -->
+    <style name="Theme.VideoAI.Dialog" parent="Theme.Material3.Dark.Dialog">
+        <item name="colorSurface">@color/videoai_surface</item>
+        <item name="colorOnSurface">@color/videoai_on_surface</item>
+    </style>
+    
+    <!-- Bottom Sheet Theme -->
+    <style name="Theme.VideoAI.BottomSheet" parent="Theme.Material3.Dark.BottomSheetDialog">
+        <item name="colorSurface">@color/videoai_surface</item>
+        <item name="colorOnSurface">@color/videoai_on_surface</item>
+        <item name="bottomSheetStyle">@style/Widget.VideoAI.BottomSheet</item>
+    </style>
+    
+    <style name="Widget.VideoAI.BottomSheet" parent="Widget.Material3.BottomSheet.Modal">
+        <item name="shapeAppearance">@shape/VideoAI.BottomSheet</item>
+    </style>
+    
+    <!-- Shape Appearance -->
+    <shape name="shape/VideoAI.BottomSheet">
+        <corners
+            android:topLeftRadius="16dp"
+            android:topRightRadius="16dp" />
+    </shape>
+</resources>

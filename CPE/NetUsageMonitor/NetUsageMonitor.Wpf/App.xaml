@@ -1,0 +1,23 @@
+<Application x:Class="NetUsageMonitor.Wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:NetUsageMonitor.Wpf"
+             xmlns:vm="clr-namespace:NetUsageMonitor.Wpf.ViewModels"
+             xmlns:converters="clr-namespace:NetUsageMonitor.Wpf.Converters"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles.xaml"/>
+                <ResourceDictionary Source="Resources/Colors.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <converters:BooleanToVisibilityConverter x:Key="BoolToVis"/>
+            <converters:InverseBooleanToVisibilityConverter x:Key="InverseBoolToVis"/>
+            <converters:DataSizeToStringConverter x:Key="DataSizeToString"/>
+            <converters:AlertSeverityToColorConverter x:Key="AlertSeverityToColor"/>
+            <converters:ConnectionStatusToColorConverter x:Key="ConnectionStatusToColor"/>
+            <converters:SampleStatusToStringConverter x:Key="SampleStatusToString"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

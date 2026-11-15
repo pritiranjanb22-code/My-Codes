@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="aspect_ratios">
+        <item>16:9</item>
+        <item>9:16</item>
+        <item>1:1</item>
+        <item>4:5</item>
+        <item>4:3</item>
+        <item>Custom</item>
+    </string-array>
+    
+    <string-array name="export_presets">
+        <item>Instagram Reel (1080x1920, 30fps)</item>
+        <item>TikTok (1080x1920, 30fps)</item>
+        <item>YouTube Shorts (1080x1920, 60fps)</item>
+        <string-array name="export_presets">
+        <item>Instagram Reel (1080x1920, 30fps)</item>
+        <item>TikTok (1080x1920, 30fps)</item>
+        <item>YouTube Shorts (1080x1920, 60fps)</item>
+        <item>YouTube 1080p (1920x1080, 30fps)</item>
+        <item>YouTube 4K (3840x2160, 30fps)</item>
+        <item>Custom</item>
+    </string-array>
+    
+    <string-array name="proxy_qualities">
+        <item>Low (360p)</item>
+        <item>Medium (480p)</item>
+        <item>High (720p)</item>
+    </string-array>
+    
+    <string-array name="video_codecs">
+        <item>H.264 (AVC)</item>
+        <item>H.265 (HEVC)</item>
+    </string-array>
+    
+    <string-array name="audio_codecs">
+        <item>AAC</item>
+        <item>MP3</item>
+    </string-array>
+</resources>

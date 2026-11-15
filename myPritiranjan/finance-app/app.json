@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "Finance Manager",
+    "slug": "finance-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.financemanager.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.financemanager.app",
+      "permissions": ["USE_BIOMETRIC", "USE_FINGERPRINT"]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-sqlite",
+      "expo-secure-store",
+      "expo-local-authentication",
+      "expo-notifications",
+      [
+        "expo-file-system",
+        {
+          "androidPermission": "READ_EXTERNAL_STORAGE"
+        }
+      ]
+    ],
+    "scheme": "financeapp",
+    "extra": {
+      "eas": {
+        "projectId": "your-project-id"
+      }
+    }
+  }
+}

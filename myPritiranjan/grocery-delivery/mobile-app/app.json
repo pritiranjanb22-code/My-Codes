@@ -1,0 +1,73 @@
+{
+  "expo": {
+    "name": "Fresh Mart Grocery",
+    "slug": "grocery-mobile-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#2E7D32"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.freshmart.grocery",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "This app needs location access to find your delivery address",
+        "NSCameraUsageDescription": "This app needs camera access to scan QR codes",
+        "NSPhotoLibraryUsageDescription": "This app needs photo library access to upload payment screenshots"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#2E7D32"
+      },
+      "package": "com.freshmart.grocery",
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "INTERNET",
+        "VIBRATE",
+        "RECEIVE_BOOT_COMPLETED"
+      ],
+      "googleServicesFile": "./google-services.json"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-secure-store",
+      "expo-notifications",
+      "expo-location",
+      "expo-image-picker",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ]
+    ],
+    "scheme": "freshmart",
+    "extra": {
+      "eas": {
+        "projectId": "your-project-id"
+      },
+      "apiUrl": "http://10.0.2.2:3000/api/v1"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/your-project-id"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 Color Scheme -->
+    <color name="md_theme_dark_primary">#FF00E676</color>
+    <color name="md_theme_dark_onPrimary">#FF1F1B24</color>
+    <color name="md_theme_dark_primaryContainer">#FF006E3B</color>
+    <color name="md_theme_dark_onPrimaryContainer">#FF9FF9BB</color>
+    <color name="md_theme_dark_secondary">#FFCCECC5</color>
+    <color name="md_theme_dark_onSecondary">#FF30392E</color>
+    <color name="md_theme_dark_secondaryContainer">#FF485046</color>
+    <color name="md_theme_dark_onSecondaryContainer">#FFD0EFCA</color>
+    <color name="md_theme_dark_tertiary">#FFEFB8C8</color>
+    <color name="md_theme_dark_onTertiary">#FF492532</color>
+    <color name="md_theme_dark_tertiaryContainer">#FF633B48</color>
+    <color name="md_theme_dark_onTertiaryContainer">#FFFDAFBA</color>
+    <color name="md_theme_dark_error">#FFFFB4AB</color>
+    <color name="md_theme_dark_onError">#FF690005</color>
+    <color name="md_theme_dark_errorContainer">#FF93000A</color>
+    <color name="md_theme_dark_onErrorContainer">#FFFFDAD6</color>
+    <color name="md_theme_dark_background">#FF121212</color>
+    <color name="md_theme_dark_onBackground">#FFE6E1E5</color>
+    <color name="md_theme_dark_surface">#FF121212</color>
+    <color name="md_theme_dark_onSurface">#FFE6E1E5</color>
+    <color name="md_theme_dark_surfaceVariant">#FF44474E</color>
+    <color name="md_theme_dark_onSurfaceVariant">#FFCAC4D0</color>
+    <color name="md_theme_dark_outline">#FF8E9099</color>
+    <color name="md_theme_dark_outlineVariant">#FF44474E</color>
+    <color name="md_theme_dark_shadow">#FF000000</color>
+    <color name="md_theme_dark_scrim">#FF000000</color>
+    <color name="md_theme_dark_inverseSurface">#FFE6E1E5</color>
+    <color name="md_theme_dark_inverseOnSurface">#FF313033</color>
+    <color name="md_theme_dark_inversePrimary">#FF006E3B</color>
+    
+    <!-- Custom WiFiChat Colors -->
+    <color name="wifichat_primary">#FF00E676</color>
+    <color name="wifichat_primary_variant">#FF006E3B</color>
+    <color name="wifichat_secondary">#FF64DD17</color>
+    <color name="wifichat_background">#FF0A0A0A</color>
+    <color name="wifichat_surface">#FF1E1E1E</color>
+    <color name="wifichat_surface_variant">#FF2C2C2C</color>
+    <color name="wifichat_on_primary">#FF1F1B24</color>
+    <color name="wifichat_on_surface">#FFFFFFFF</color>
+    <color name="wifichat_on_background">#FFFFFFFF</color>
+    <color name="wifichat_divider">#FF333333</color>
+    <color name="wifichat_error">#FFCF6679</color>
+    <color name="wifichat_success">#FF00E676</color>
+    <color name="wifichat_warning">#FFFFB74D</color>
+    <color name="wifichat_info">#FF64B5F6</color>
+    <color name="wifichat_online">#FF00E676</color>
+    <color name="wifichat_offline">#FF8E9099</color>
+    <color name="wifichat_call_incoming">#FF00E676</color>
+    <color name="wifichat_call_outgoing">#FF64B5F6</color>
+    <color name="wifichat_message_sent">#FF00E676</color>
+    <color name="wifichat_message_received">#FF2C2C2C</color>
+    <color name="wifichat_bubble_sent">#FF006E3B</color>
+    <color name="wifichat_bubble_received">#FF2C2C2C</color>
+    
+    <!-- Alpha variants -->
+    <color name="wifichat_overlay_50">#80000000</color>
+    <color name="wifichat_overlay_70">#B3000000</color>
+    <color name="wifichat_primary_10">#1A00E676</color>
+    <color name="wifichat_primary_20">#3300E676</color>
+</resources>

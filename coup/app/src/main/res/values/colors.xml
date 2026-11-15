@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary - Romantic Rose -->
+    <color name="primary">#E91E63</color>
+    <color name="primary_variant">#C2185B</color>
+    <color name="primary_container">#FCE4EC</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_primary_container">#880E4F</color>
+
+    <!-- Secondary - Warm Gold -->
+    <color name="secondary">#FFB300</color>
+    <color name="secondary_variant">#F57F17</color>
+    <color name="secondary_container">#FFF8E1</color>
+    <color name="on_secondary">#000000</color>
+    <color name="on_secondary_container">#E65100</color>
+
+    <!-- Tertiary - Soft Lavender -->
+    <color name="tertiary">#BA68C8</color>
+    <color name="tertiary_variant">#9C27B0</color>
+    <color name="tertiary_container">#F3E5F5</color>
+    <color name="on_tertiary">#FFFFFF</color>
+    <color name="on_tertiary_container">#4A148C</color>
+
+    <!-- Surface -->
+    <color name="surface">#FAFAFA</color>
+    <color name="surface_variant">#F5F5F5</color>
+    <color name="surface_container">#EEEEEE</color>
+    <color name="on_surface">#1C1B1F</color>
+    <color name="on_surface_variant">#49454F</color>
+
+    <!-- Background -->
+    <color name="background">#FCFCFC</color>
+    <color name="on_background">#1C1B1F</color>
+
+    <!-- Error -->
+    <color name="error">#BA1A1A</color>
+    <color name="error_container">#FFDAD6</color>
+    <color name="on_error">#FFFFFF</color>
+    <color name="on_error_container">#410002</color>
+
+    <!-- Success -->
+    <color name="success">#2E7D32</color>
+    <color name="success_container">#C8E6C9</color>
+    <color name="on_success">#FFFFFF</color>
+
+    <!-- Warning -->
+    <color name="warning">#FF8F00</color>
+    <color name="warning_container">#FFF3E0</color>
+    <color name="on_warning">#000000</color>
+
+    <!-- Outline -->
+    <color name="outline">#79747E</color>
+    <color name="outline_variant">#CAC4D0</color>
+
+    <!-- Dark Theme Colors -->
+    <color name="dark_primary">#F06292</color>
+    <color name="dark_primary_variant">#EC407A</color>
+    <color name="dark_primary_container">#880E4F</color>
+    <color name="dark_on_primary">#FFFFFF</color>
+    <color name="dark_on_primary_container">#FCE4EC</color>
+
+    <color name="dark_secondary">#FFD54F</color>
+    <color name="dark_secondary_variant">#FFB300</color>
+    <color name="dark_secondary_container">#E65100</color>
+    <color name="dark_on_secondary">#000000</color>
+    <color name="dark_on_secondary_container">#FFF8E1</color>
+
+    <color name="dark_tertiary">#CE93D8</color>
+    <color name="dark_tertiary_variant">#BA68C8</color>
+    <color name="dark_tertiary_container">#4A148C</color>
+    <color name="dark_on_tertiary">#000000</color>
+    <color name="dark_on_tertiary_container">#F3E5F5</color>
+
+    <color name="dark_surface">#1C1B1F</color>
+    <color name="dark_surface_variant">#27262A</color>
+    <color name="dark_surface_container">#302F33</color>
+    <color name="dark_on_surface">#E6E1E5</color>
+    <color name="dark_on_surface_variant">#CAC4D0</color>
+
+    <color name="dark_background">#1C1B1F</color>
+    <color name="dark_on_background">#E6E1E5</color>
+
+    <color name="dark_error">#FFB4AB</color>
+    <color name="dark_error_container">#93000A</color>
+    <color name="dark_on_error">#000000</color>
+    <color name="dark_on_error_container">#FFDAD6</color>
+
+    <color name="dark_outline">#938F99</color>
+    <color name="dark_outline_variant">#49454F</color>
+
+    <color name="dark_success">#81C784</color>
+    <color name="dark_success_container">#1B5E20</color>
+    <color name="dark_on_success">#000000</color>
+
+    <color name="dark_warning">#FFB74D</color>
+    <color name="dark_warning_container">#E65100</color>
+    <color name="dark_on_warning">#000000</color>
+</resources>

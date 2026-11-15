@@ -1,0 +1,111 @@
+<UserControl x:Class="NetUsageMonitor.Wpf.Views.LiveMonitoringView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+             xmlns:vm="clr-namespace:NetUsageMonitor.Wpf.ViewModels"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="900"
+             d:DataContext="{d:DesignInstance vm:LiveMonitoringViewModel}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="24">
+        <StackPanel>
+            <!-- Header -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="SpaceBetween" Margin="0,0,0,24">
+                <StackPanel>
+                    <TextBlock Text="Live Monitoring" Style="{DynamicResource Header1Style}"/>
+                    <TextBlock Text="Real-time traffic rates and device status" Style="{DynamicResource SubtitleStyle}"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Device Status Cards -->
+            <ItemsControl ItemsSource="{Binding Devices}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{DynamicResource CardStyle}" Width="320" Margin="0,0,16,16">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Ellipse Width="12" Height="12" 
+                                             Fill="{Binding IsOnline, Converter={x:Static converters:BooleanToBrushConverter.Instance}, ConverterParameter=Green;Red}" 
+                                             VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding DeviceName}" FontSize="14" FontWeight="SemiBold"/>
+                                        <TextBlock Text="{Binding FriendName}" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                                
+                                <Grid Margin="0,12,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="⬇ Download" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                        <TextBlock Text="{Binding CurrentDownloadMbps, StringFormat='{0:F2} Mbps'}" FontSize="18" FontWeight="Bold" Foreground="#2196F3"/>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1">
+                                        <TextBlock Text="⬆ Upload" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                        <TextBlock Text="{Binding CurrentUploadMbps, StringFormat='{0:F2} Mbps'}" FontSize="18" FontWeight="Bold" Foreground="#FF9800"/>
+                                    </StackPanel>
+                                </Grid>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                                    <TextBlock Text="Interface: " FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="{Binding InterfaceUp, Converter={x:Static converters:BooleanToStatusTextConverter.Instance}, ConverterParameter=Up;Down}" 
+                                               FontSize="11" FontWeight="Medium" 
+                                               Foreground="{Binding InterfaceUp, Converter={x:Static converters:BooleanToBrushConverter.Instance}, ConverterParameter=Green;Red}"/>
+                                    <TextBlock Text="  |  " FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="{Binding InterfaceSpeed, StringFormat='Speed: {0} bps'}" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <TextBlock Text="Counters: " FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="{Binding CurrentInOctets, StringFormat='In: {0:N0}'}" FontSize="11" FontFamily="Consolas"/>
+                                    <TextBlock Text="  " FontSize="11"/>
+                                    <TextBlock Text="{Binding CurrentOutOctets, StringFormat='Out: {0:N0}'}" FontSize="11" FontFamily="Consolas"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                    <TextBlock Text="Last Poll: " FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="{Binding LastPoll, StringFormat='{0:HH:mm:ss}'}" FontSize="11" FontFamily="Consolas"/>
+                                    <TextBlock Text="  |  " FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="Failures: " FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}"/>
+                                    <TextBlock Text="{Binding ConsecutiveFailures}" FontSize="11" FontWeight="Medium" 
+                                               Foreground="{Binding ConsecutiveFailures, Converter={x:Static converters:FailureCountToColorConverter.Instance}}"/>
+                                </StackPanel>
+
+                                <TextBlock Text="{Binding LastError}" FontSize="11" Foreground="#F44336" Margin="0,8,0,0" TextWrapping="Wrap" 
+                                           Visibility="{Binding LastError, Converter={x:Static converters:StringToVisibilityConverter.Instance}}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- Traffic Rate Chart -->
+            <Border Style="{DynamicResource CardStyle}" Margin="0,16,0,0">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="SpaceBetween" Margin="0,0,0,16">
+                        <TextBlock Text="Traffic Rate (Last 30 Minutes)" Style="{DynamicResource Header3Style}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Interval: " FontSize="12" Foreground="{DynamicResource TextSecondaryBrush}" VerticalAlignment="Center"/>
+                            <ComboBox SelectedItem="{Binding PollingInterval}" Width="80" Margin="8,0,16,0">
+                                <ComboBoxItem Content="10s" Tag="10"/>
+                                <ComboBoxItem Content="30s" Tag="30"/>
+                                <ComboBoxItem Content="60s" Tag="60" IsSelected="True"/>
+                                <ComboBoxItem Content="120s" Tag="120"/>
+                            </ComboBox>
+                            <Button Content="Apply" Command="{Binding ApplyPollingIntervalCommand}" Style="{DynamicResource SecondaryButtonStyle}" Padding="12,6"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <lvc:CartesianChart Series="{Binding TrafficRateSeries}" XAxes="{Binding XAxis}" YAxes="{Binding YAxis}" Height="350" LegendPosition="Bottom" TooltipPosition="Top"/>
+                </Border>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

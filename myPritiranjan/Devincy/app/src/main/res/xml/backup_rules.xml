@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <include domain="database" path="videoai.db" />
+    <include domain="sharedpref" path="videoai_prefs.xml" />
+    <include domain="file" path="projects/" />
+    <exclude domain="file" path="cache/" />
+    <exclude domain="file" path="thumbnails/" />
+    <exclude domain="file" path="proxies/" />
+    <exclude domain="file" path="waveforms/" />
+</full-backup-content>

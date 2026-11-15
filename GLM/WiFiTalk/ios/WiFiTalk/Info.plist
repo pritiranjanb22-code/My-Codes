@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleDisplayName</key>
+    <string>WiFiTalk</string>
+    <key>CFBundleExecutable</key>
+    <string>$(EXECUTABLE_NAME)</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.wifitalk</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>WiFiTalk</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+        <key>NSAllowsLocalNetworking</key>
+        <true/>
+    </dict>
+    <key>NSCameraUsageDescription</key>
+    <string>WiFiTalk needs camera access for video calls and QR code scanning</string>
+    <key>NSLocalNetworkUsageDescription</key>
+    <string>WiFiTalk uses local network to discover and communicate with nearby devices</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>WiFiTalk needs microphone access for voice calls and walkie-talkie</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>WiFiTalk needs photo library access to share images and videos</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>WiFiTalk needs photo library access to save received media</string>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>voip</string>
+        <string>audio</string>
+        <string>fetch</string>
+        <string>remote-notification</string>
+        <string>background-processing</string>
+    </array>
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+        <string>arm64</string>
+        <string>wifi</string>
+        <string>microphone</string>
+        <string>camera</string>
+    </array>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
+    <true/>
+    <key>NSBonjourServices</key>
+    <array>
+        <string>_wifitalk._tcp</string>
+    </array>
+</dict>
+</plist>

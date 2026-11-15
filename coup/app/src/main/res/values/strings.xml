@@ -1,0 +1,202 @@
+<resources>
+    <string name="app_name">Couple Quest</string>
+    <string name="app_name_short">CoupleQuest</string>
+
+    <!-- Splash -->
+    <string name="splash_loading">Loading your romantic adventure…</string>
+
+    <!-- Welcome -->
+    <string name="welcome_title">Welcome to Couple Quest</string>
+    <string name="welcome_subtitle">Playful games, intimate challenges, and meaningful conversations to strengthen your relationship.</string>
+    <string name="welcome_get_started">Start Playing</string>
+    <string name="welcome_settings">Settings & Privacy</string>
+    <string name="welcome_disclaimer">For consenting adults 18+ • Private & Secure • Works Offline</string>
+
+    <!-- Player Profile -->
+    <string name="player1_setup">Player 1 Setup</string>
+    <string name="player2_setup">Player 2 Setup</string>
+    <string name="enter_name">Enter your name</string>
+    <string name="choose_avatar">Choose your avatar</string>
+    <string name="choose_identity">Identity (Optional)</string>
+    <string name="continue_button">Continue</string>
+    <string name="start_game_button">Start Game</string>
+    <string name="back_button">Back</string>
+
+    <!-- Identity Options -->
+    <string name="identity_unspecified">Unspecified</string>
+    <string name="identity_male">Male</string>
+    <string name="identity_female">Female</string>
+    <string name="identity_non_binary">Non-binary</string>
+    <string name="identity_prefer_not_to_say">Prefer not to say</string>
+    <string name="identity_custom">Custom</string>
+
+    <!-- Game Modes -->
+    <string name="choose_game_mode">Choose Your Game</string>
+    <string name="game_mode_subtitle">Select a game mode to play together</string>
+    <string name="truth_or_dare">Truth or Dare</string>
+    <string name="truth_or_dare_desc">Classic game with romantic, fun, and intimate questions and dares</string>
+    <string name="intimate_positions">Intimate Positions</string>
+    <string name="intimate_positions_desc">Educational position guide with comfort tips for consenting adults</string>
+    <string name="romantic_challenges">Romantic Challenges</string>
+    <string name="romantic_challenges_desc">Date ideas, compliments, affection challenges, and thoughtful gestures</string>
+    <string name="couple_questions">Couple Questions</string>
+    <string name="couple_questions_desc">Deep conversation starters to strengthen your connection</string>
+
+    <!-- Categories -->
+    <string name="category_romantic">Romantic</string>
+    <string name="category_funny">Funny</string>
+    <string name="category_relationship">Relationship</string>
+    <string name="category_deep">Deep Questions</string>
+    <string name="category_playful">Playful</string>
+    <string name="category_adult">Adult Intimacy</string>
+    <string name="category_gentle">Gentle</string>
+    <string name="category_seated">Seated</string>
+    <string name="category_standing">Standing</string>
+    <string name="category_side_by_side">Side by Side</string>
+    <string name="category_beginner">Beginner Friendly</string>
+    <string name="category_couples_choice">Couples Choice</string>
+    <string name="category_date_ideas">Date Ideas</string>
+    <string name="category_compliments">Compliments</string>
+    <string name="category_affection">Affection</string>
+    <string name="category_thoughtful">Thoughtful Gestures</string>
+    <string name="category_surprises">Surprise Activities</string>
+    <string name="category_communication">Communication</string>
+    <string name="category_trust">Trust Building</string>
+    <string name="category_future">Future Planning</string>
+    <string name="category_memories">Memories</string>
+
+    <!-- Connection Methods -->
+    <string name="connection_method_title">How to Play Together</string>
+    <string name="connection_method_subtitle">Choose how you want to connect</string>
+    <string name="one_phone">One Phone (Pass & Play)</string>
+    <string name="one_phone_desc">Both players use the same phone, taking turns</string>
+    <string name="same_wifi">Same Wi-Fi Network</string>
+    <string name="same_wifi_desc">Two phones connected on the same Wi-Fi network</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="bluetooth_desc">Direct phone-to-phone connection via Bluetooth</string>
+
+    <!-- Room Creation -->
+    <string name="create_room">Create Game Room</string>
+    <string name="room_code_label">ROOM CODE</string>
+    <string name="share_code">Share this code with your partner</string>
+    <string name="rounds_label">Rounds</string>
+    <string name="create_room_button">Create Room</string>
+    <string name="copy_code">Copy Code</string>
+    <string name="share_code_button">Share</string>
+    <string name="new_code_button">New Code</string>
+
+    <!-- Join Room -->
+    <string name="join_room">Join Game Room</string>
+    <string name="join_room_subtitle">Enter the room code from your partner</string>
+    <string name="enter_code_hint">Enter 6-character code</string>
+    <string name="find_wifi_room">Find Room on Wi-Fi</string>
+    <string name="find_bluetooth_room">Find Room via Bluetooth</string>
+    <string name="enter_manually">Enter Code Manually</string>
+    <string name="join_room_button">Join Room</string>
+    <string name="invalid_code">Please enter a valid 6-character room code</string>
+    <string name="no_host_found">No host found on this Wi-Fi network. Make sure both devices are on the same network.</string>
+
+    <!-- Game Dashboard -->
+    <string name="round_of">Round %1$d of %2$d</string>
+    <string name="current_turn">Current Turn</string>
+    <string name="reveal_challenge">Reveal My Challenge</string>
+    <string name="completed">Completed</string>
+    <string name="skip">Skip</string>
+    <string name="reroll">Reroll</string>
+    <string name="hide_card">Hide</string>
+    <string name="challenge_completed">Challenge Completed! 🎉</string>
+    <string name="challenge_skipped">Challenge Skipped</string>
+    <string name="waiting_partner">Waiting for partner…</string>
+    <string name="progress_label">Progress</string>
+    <string name="completed_label">Completed</string>
+    <string name="skipped_label">Skipped</string>
+    <string name="adult_content_warning">Adult content - Both partners must consent. Skip anytime.</string>
+
+    <!-- Chat -->
+    <string name="chat_title">Private Chat</string>
+    <string name="chat_with">with %1$s</string>
+    <string name="chat_hint">Type a message…</string>
+    <string name="send_button">Send</string>
+    <string name="clear_chat">Clear Chat</string>
+    <string name="clear_chat_confirm">Clear Chat?</string>
+    <string name="clear_chat_message">This will permanently delete all messages in this chat. They cannot be recovered.</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="confirm_clear">Clear Chat</string>
+    <string name="one_phone_notice">Pass-the-phone mode: Hand the phone to your partner to read/reply. Messages are temporary.</string>
+    <string name="two_phone_notice">Messages are encrypted and temporary. They disappear when the game ends.</string>
+    <string name="hide_messages">Hide Messages (Pass Phone)</string>
+
+    <!-- Game History -->
+    <string name="history_title">Your Journey Together</string>
+    <string name="games_played">Games Played</string>
+    <string name="total_rounds">Rounds</string>
+    <string name="challenges_completed">Completed</string>
+    <string name="challenges_skipped">Skipped</string>
+    <string name="favorite_mode">Favorite</string>
+    <string name="longest_session">Longest</string>
+    <string name="last_played">Last played: %1$s</string>
+    <string name="no_history">No Games Yet</string>
+    <string name="no_history_subtitle">Play your first game to see your journey here</string>
+    <string name="clear_history">Clear All History</string>
+    <string name="clear_history_confirm">Clear All History?</string>
+    <string name="clear_history_message">This will permanently delete all your game sessions and stats. This action cannot be undone.</string>
+    <string name="confirm_clear_all">Clear All</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_subtitle">Customize your experience</string>
+    <string name="section_appearance">Appearance</string>
+    <string name="section_gameplay">Gameplay</string>
+    <string name="section_privacy">Privacy & Safety</string>
+    <string name="section_data">Data</string>
+    <string name="section_about">About</string>
+    <string name="dark_theme">Dark Theme</string>
+    <string name="dark_theme_desc">Use dark color scheme</string>
+    <string name="haptic_feedback">Haptic Feedback</string>
+    <string name="haptic_feedback_desc">Vibrate on interactions</string>
+    <string name="sound_effects">Sound Effects</string>
+    <string name="sound_effects_desc">Play sounds during gameplay</string>
+    <string name="adult_content">Adult Content</string>
+    <string name="adult_content_desc">Enable 18+ intimate content</string>
+    <string name="clear_chat_exit">Clear Chat on Exit</string>
+    <string name="clear_chat_exit_desc">Automatically delete messages when leaving a game</string>
+    <string name="consent_reminders">Consent Reminders</string>
+    <string name="consent_reminders_desc">Show consent notice before adult content</string>
+    <string name="share_analytics">Share Analytics</string>
+    <string name="share_analytics_desc">Help improve the app (anonymous)</string>
+    <string name="pin_adult_content">PIN for Adult Content</string>
+    <string name="pin_adult_content_desc">Require PIN to access 18+ content</string>
+    <string name="clear_all_data">Clear All Data</string>
+    <string name="clear_all_data_desc">Delete all game history, settings, and chat data</string>
+    <string name="version">Version</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="terms_of_service">Terms of Service</string>
+    <string name="licenses">Licenses</string>
+
+    <!-- Consent -->
+    <string name="consent_title">Adult Content Consent</string>
+    <string name="consent_message">This game includes intimate content for consenting adults aged 18+. By enabling this, you confirm:\n\n• You are 18 years or older\n• You and your partner consent to intimate content\n• You understand you can skip any challenge at any time\n• No pressure or coercion is ever acceptable\n\nThis setting can be changed anytime in Settings.</string>
+    <string name="consent_agree">I Consent (18+)</string>
+    <string name="consent_decline">Not Now</string>
+
+    <!-- Errors -->
+    <string name="error_bluetooth_unavailable">Bluetooth is not available on this device</string>
+    <string name="error_bluetooth_disabled">Please enable Bluetooth in settings</string>
+    <string name="error_wifi_unavailable">Wi-Fi is not available</string>
+    <string name="error_connection_failed">Connection failed. Please try again.</string>
+    <string name="error_room_not_found">Room not found. Check the code and try again.</string>
+    <string name="error_room_expired">This room has expired or ended.</string>
+
+    <!-- Accessibility -->
+    <string name="avatar_heart">Heart avatar</string>
+    <string name="avatar_star">Star avatar</string>
+    <string name="avatar_moon">Moon avatar</string>
+    <string name="avatar_sun">Sun avatar</string>
+    <string name="avatar_flower">Flower avatar</string>
+    <string name="avatar_gem">Gem avatar</string>
+    <string name="avatar_crown">Crown avatar</string>
+    <string name="avatar_key">Key avatar</string>
+    <string name="avatar_lock">Lock avatar</string>
+    <string name="avatar_anchor">Anchor avatar</string>
+    <string name="avatar_wing">Wing avatar</string>
+</resources>

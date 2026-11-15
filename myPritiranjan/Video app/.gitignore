@@ -1,0 +1,47 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+build/
+*.dart_tool/
+*.packages
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+!.env.example
+
+# Build outputs
+*.apk
+*.aab
+*.ipa
+*.app
+*.dSYM/
+*.xcarchive
+
+# Flutter specific
+flutter_*.png
+.dart_tool/package_config.json
+
+# Pub
+pubspec.lock
+# pubspec.yaml is committed
+
+# Logs
+*.log
+
+# Coverage
+coverage/
+lcov.info
+
+# Misc
+*.tgz
+.cache/

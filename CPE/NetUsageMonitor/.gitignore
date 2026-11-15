@@ -1,0 +1,75 @@
+# .gitignore
+
+## Build outputs
+bin/
+obj/
+publish/
+*.exe
+*.dll
+*.pdb
+
+## IDE
+.vs/
+*.suo
+*.user
+*.sln.docstates
+
+## VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+## Rider
+.idea/
+
+## NuGet
+packages/
+*.nupkg
+*.snupkg
+
+## Test results
+TestResults/
+*.trx
+*.coverage
+coverage/
+
+## Database
+*.db
+*.db-shm
+*.db-wal
+netusagemonitor.db
+
+## Logs
+logs/
+*.log
+
+## Credentials (never commit)
+*credential*
+*secret*
+*password*.json
+
+## OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+## Publish
+*.msi
+*.zip
+*.exe.config
+
+## Temporary
+*.tmp
+*.temp
+temp/
+tmp/
+
+## Benchmark
+BenchmarkDotNet.Artifacts/
+
+## Code coverage
+*.cobertura.xml
+*.opencover.xml

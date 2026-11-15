@@ -1,0 +1,298 @@
+# PROJECT USAGE GUIDE
+# ====================
+# AirLLM (lyogavin/airllm) & REAnything (morluto/rea)
+# Location: C:\Users\Shradha\OneDrive\Documents\
+
+# =============================================================================
+# AIRLLM - Run/Train Huge LLMs on Small GPUs
+# =============================================================================
+# Repository: C:\Users\Shradha\OneDrive\Documents\AIR LLM
+# GitHub: https://github.com/lyogavin/airllm
+# Paper: https://arxiv.org/abs/2212.09720
+
+## QUICK START
+```bash
+# 1. Install
+pip install airllm
+
+# 2. Basic inference (any model)
+python -c "
+from airllm import AutoModel
+model = AutoModel.from_pretrained('Qwen/Qwen3-32B')
+input_tokens = model.tokenizer(['What is the capital of France?'], return_tensors='pt', truncation=True, max_length=128)
+output = model.generate(input_tokens['input_ids'].cuda(), max_new_tokens=20)
+print(model.tokenizer.decode(output.sequences[0]))
+"
+```
+
+## KEY FEATURES & USAGE
+
+### Run Massive Models on Tiny VRAM
+| Model | Size | VRAM Required |
+|-------|------|---------------|
+| Qwen3-32B | 32B | ~2-3 GB |
+| Qwen3.8-27B (VL) | 27B | 3.33 GB |
+| Qwen3.8-Flash-Next (MoE) | 125B | 5.95 GB |
+| Llama 3.1 70B | 70B | ~4 GB |
+| Llama 3.1 405B | 405B | ~8 GB |
+| DeepSeek-V3 | 671B | ~12 GB |
+| Kimi K3 | 2.8T | 3.72 GB |
+
+### Configuration Options
+```python
+model = AutoModel.from_pretrained(
+    "Qwen/Qwen3.8-Flash-Next",
+    compression='4bit',           # '4bit' or '8bit' for 3x speedup (needs bitsandbytes)
+    profiling_mode=True,          # Show layer load times
+    prefetching=True,             # Overlap disk load with compute
+    delete_original=True,         # Save disk space after splitting
+    layer_shards_saving_path="/custom/path",  # Custom shard location
+    hf_token="your_hf_token",     # For gated models
+    max_seq_len=512
+)
+```
+
+### Model Compression (3x Speedup)
+```bash
+pip install -U bitsandbytes airllm
+```
+```python
+model = AutoModel.from_pretrained("model-name", compression='4bit')  # or '8bit'
+```
+
+### Training (LoRA) on Small VRAM
+```bash
+# Qwen3.8-Flash-Next (125B) trains under 6GB VRAM
+python air_llm/examples/train_qwen38_flash_next_lora.py \
+  --data my_data.jsonl \
+  --seq-len 512 \
+  --epochs 1 \
+  --save-adapter qwen38-flash-next-lora.pt
+```
+
+```python
+# Python API
+from airllm import AirLLMLoRAQwen4Exp
+trainer = AirLLMLoRAQwen4Exp("Qwen/Qwen3.8-Flash-Next", max_seq_len=512, lora_r=16)
+loss = trainer.train_step(input_ids.cuda())
+trainer.save_adapter("adapter.pt")
+```
+
+### MacOS Support
+```bash
+pip install mlx torch
+# Apple Silicon only
+python air_llm/examples/run_on_macos.ipynb
+```
+
+## PROJECT STRUCTURE
+```
+AIR LLM/
+├── air_llm/
+│   ├── airllm/              # Core library
+│   │   ├── airllm_base.py   # Layer streaming engine (920 lines)
+│   │   ├── airllm_lora.py   # LoRA training
+│   │   ├── auto_model.py    # Unified AutoModel
+│   │   ├── airllm_qwen*.py  # Qwen variants
+│   │   ├── airllm_kimi_k3.py # Kimi K3 (2.8T)
+│   │   ├── utils.py         # Sharding, mmap, quantization
+│   │   └── persist.py       # Model persistence
+│   ├── examples/            # Inference & training scripts
+│   └── tests/
+├── requirements.txt
+└── README.md
+```
+
+## COMMON ISSUES
+- **MetadataIncompleteBuffer**: Out of disk space (splitting is disk-heavy)
+- **max() arg empty sequence**: Use `AutoModel` not specific class (e.g., AirLLMLlama2)
+- **401 Gated model**: Provide `hf_token` parameter
+- **Padding token error**: Set `padding=False` in tokenizer call
+
+---
+
+# =============================================================================
+# REANYTHING (REA) - Reverse Engineer Anything
+# =============================================================================
+# Repository: C:\Users\Shradha\OneDrive\Documents\REAnything
+# GitHub: https://github.com/morluto/rea
+# Website: https://rea.tools/
+
+## QUICK START
+```bash
+# 1. Install & Setup (registers MCP server with your agent)
+npx rea-agents setup
+
+# 2. Choose your agent (Claude Code, Codex, Cursor, etc.)
+# 3. Restart your agent
+# 4. Ask your agent:
+#    "Understand how search works in Notes app, show evidence, build similar feature"
+```
+
+## CLI USAGE
+```bash
+# Install globally
+npm install --global rea-agents
+rea --help
+
+# Analyze JavaScript/Electron app
+rea analyze-javascript-application /path/to/app --json
+
+# Native binary analysis (needs Hopper/Ghidra/IDA)
+rea analyze-native /path/to/binary
+
+# Update REA
+rea update
+# Or via npx:
+npx rea-agents@latest setup
+```
+
+## SUPPORTED ANALYSIS TARGETS
+| Target | Requirements | Output |
+|--------|--------------|--------|
+| Native binaries (ELF/PE/Mach-O) | Hopper, Ghidra, or IDA | Pseudocode, asm, strings, calls |
+| Go/Rust binaries | Built-in (no tool needed) | Compiler info, modules, deps |
+| JavaScript/Electron | Node.js + npm | Modules, imports, IPC, routes |
+| Websites | Chrome-family browser | DOM, scripts, network, screenshots |
+| .NET assemblies | None (static) | Metadata, CIL, native deps |
+| Android APK | JADX + JDK | Manifest, classes, decompiled methods |
+| Android device | adb | Processes, logs, dumps, screen caps |
+| WASM/EVM/SQLite/pcap/Signals | Various | Specialized parsing |
+| Firmware | Binwalk/Unblob | Extraction + native handoff |
+| Flutter/JEB/APKTool | Various | Dart snapshot, JEB projects, resources |
+
+## MCP TOOLS (for agents)
+Once setup, your agent can call these tools:
+- `analyze_native_binary` - Deep binary analysis
+- `analyze_javascript_application` - JS/Electron app inspection
+- `analyze_android_apk` - APK decompilation
+- `analyze_website` - Browser-based analysis
+- `capture_process` - Runtime process observation
+- `inspect_wasm_artifact` - WASM validation
+- `analyze_dotnet_assembly` - .NET metadata + CIL
+- `analyze_evm_bytecode` - Smart contract analysis
+- And 15+ more...
+
+## ARCHITECTURE
+```
+REAnything/
+├── src/
+│   ├── contracts/          # Evidence types, tool contracts
+│   ├── domain/             # Analysis semantics
+│   ├── application/        # Investigation workflows
+│   ├── ghidra/             # Ghidra provider adapter
+│   ├── hopper/             # Hopper provider adapter
+│   ├── ida/                # IDA provider adapter
+│   ├── kuna/               # Kuna decompiler adapter
+│   ├── javascript/         # JS/Electron static analysis
+│   ├── electron/           # Electron-specific analysis
+│   ├── dotnet/             # .NET assembly analysis
+│   ├── android/            # Android (JADX, ADB, Apktool)
+│   ├── browser/            # Chrome DevTools Protocol
+│   ├── native/             # Native binary common logic
+│   ├── process/            # Process supervision
+│   ├── cli/                # CLI commands
+│   ├── server/             # MCP server
+│   └── main.ts             # Entry point
+├── .agents/skills/         # Agent skill definitions
+├── docs/                   # Guides, architecture, testing
+├── package.json            # Turborepo + npm scripts
+└── tsconfig.json
+```
+
+## DEVELOPMENT
+```bash
+# Install pinned toolchain (Node.js from .nvmrc)
+npm ci
+
+# Build
+npm run build:cached
+
+# Test
+npm run test:local -- PATH_TO_TEST
+npm run test:focused -- PATH_TO_TEST
+
+# Lint + Typecheck (fast)
+npm run check:fast
+
+# Full PR check
+npm run check:pr
+
+# Docs validation
+npm run docs:check
+```
+
+## KEY PRINCIPLES
+- **Local-only**: No data leaves your machine
+- **Read-only**: Never modifies target binaries/apps
+- **Evidence-based**: Every finding includes source, confidence, limitations
+- **Fail-closed**: No integration until scope/authority verified
+- **Ownership semantics**: Proper process lifecycle management
+
+## CONFIGURATION
+- Provider selection: `REA_GHIDRA_STARTUP_TIMEOUT_MS`, `REA_HOPPER_STARTUP_TIMEOUT_MS`
+- Native analysis engine: Configured during `rea setup` or via `server.json`
+- MCP registration: `npx rea-agents setup` (backs up existing config)
+
+---
+
+# =============================================================================
+# PUSH TO GITHUB (pritiranjanb22-code)
+# =============================================================================
+# Both repos are cloned locally. To push to your GitHub:
+
+## AirLLM
+```bash
+cd "C:\Users\Shradha\OneDrive\Documents\AIR LLM"
+git remote set-url origin https://github.com/pritiranjanb22-code/AIR-LLM.git
+git push -u origin main
+```
+
+## REAnything
+```bash
+cd "C:\Users\Shradha\OneDrive\Documents\REAnything"
+git remote set-url origin https://github.com/pritiranjanb22-code/REAnything.git
+git push -u origin main
+```
+
+> Note: Create repos first at https://github.com/new (private)
+> Names: AIR-LLM and REAnything
+
+---
+
+# =============================================================================
+# REQUIREMENTS SUMMARY
+# =============================================================================
+
+## AirLLM
+- Python 3.8+
+- PyTorch (CUDA for GPU)
+- transformers, accelerate, safetensors
+- bitsandbytes (optional, for compression)
+- mlx (MacOS only)
+
+## REAnything
+- Node.js 22.x (>=22.19), 24.x (>=24.11), or 26+
+- npm
+- Native analysis (optional): Hopper, Ghidra, or IDA
+- Android: JADX + JDK, adb
+- Linux: procps `ps` for process ownership checks
+
+---
+
+# =============================================================================
+# USEFUL LINKS
+# =============================================================================
+# AirLLM:
+#   - GitHub: https://github.com/lyogavin/airllm
+#   - Blog: https://medium.com/@lyo.gavin
+#   - Discord: https://discord.gg/2xffU5sn
+#   - Colab Examples: https://github.com/lyogavin/airllm/tree/main/air_llm/examples
+
+# REAnything:
+#   - Website: https://rea.tools/
+#   - Guides: https://rea.tools/guides/
+#   - Showcases: https://rea.tools/showcase/
+#   - Discord: https://discord.gg/GkcryMnJDM
+#   - Docs: https://github.com/morluto/rea/tree/main/docs
+#   - Architecture: https://github.com/morluto/rea/blob/main/docs/architecture.mermaid
